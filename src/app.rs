@@ -432,10 +432,9 @@ impl App {
             KeyCode::Backspace => {
                 field(f).pop();
             }
-            KeyCode::Char(c) if f.field != 3 && !k.modifiers.contains(KeyModifiers::CONTROL) => {
-                if f.field != 2 || c.is_ascii_digit() {
-                    field(f).push(c);
-                }
+            // the port field (2) takes digits only
+            KeyCode::Char(c) if f.field != 3 && !k.modifiers.contains(KeyModifiers::CONTROL) && (f.field != 2 || c.is_ascii_digit()) => {
+                field(f).push(c);
             }
             _ => {}
         }
