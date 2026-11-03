@@ -231,6 +231,9 @@ Lessons from the first cut:
   says WILL.
 - Test passwords, GMCP and the like against a local fake server, never
   against a real account on a real MUD.
+- av caches the catalog as `catalog-<fnv1a of the URL>.json`, one file per
+  address, not `catalog.json`; `paths.rs` works out the same name (found
+  2026-11-03, when Lera's picker had silently lost every catalog world).
 - Achaea, Aardwolf and Discworld document no TLS port (searched 2026-10-10);
   Dune MUD's 6788 is a known good TLS test.
 
@@ -238,8 +241,15 @@ Lessons from the first cut:
 
 v1 working, 2026-10-10, tested on Aardwolf, Achaea, Discworld, BatMUD and
 (TLS) Dune MUD, plus a local fake server for password masking, MTTS, CHARSET
-and GMCP vitals. av's Connect opens Lera (av change not committed yet).
-Not yet checked: Windows and macOS builds. Local git repo, nothing committed,
-not on GitHub yet.
+and GMCP vitals. av's Connect opens Lera.
+
+Readied for the Asciiverse launch 2026-11-03: mouse-wheel scrollback (mouse
+capture on, so copying is Shift+drag), CI (clippy and tests on all three
+OSes, MSRV 1.88, licences via `cargo about` and `about.toml`) and a release
+workflow on av's pattern (`v*` tag: six targets, `lera-<target>` archives,
+SHA256SUMS). Preview `asciiverse/lera.cast` recorded with
+`hub/tools/castrec.py`; hub has `catalog/lera.toml`, `lera.md` and
+`site/casts/lera.cast`. Windows and macOS are first exercised by CI and the
+release builds; play a session on each once they exist.
 
 Name confirmed: Lera. Conceived 2026-07-02, scout camp; rescoped 2026-10-10.
