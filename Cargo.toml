@@ -1,0 +1,26 @@
+[package]
+name = "lera"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.88"
+description = "Lera, the Asciiverse MUD client: play any MUD in your terminal"
+license = "MIT"
+publish = false
+
+[dependencies]
+anyhow = "1.0.104"
+directories = "6.0.0"
+env_logger = "0.11.11"
+flate2 = "1.1.10"
+libmudtelnet = "2.0.2"
+log = "0.4.34"
+ratatui = "0.30.2"
+rustls = { version = "0.23", default-features = false, features = ["ring", "std", "tls12", "logging"] }
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.151"
+toml = "0.9"
+unicode-width = "0.2.2"
+webpki-roots = "1.0.9"
+
+[profile.release]
+lto = "thin"
